@@ -53,7 +53,7 @@ cr .( The parsec is: ) psec f. cr
     \ convert the remaining index to float, get the exp of it
     \ and fprint it to clear the fp stack for the next round
     dup cr ." Generate the exponentials of the first " . ." integers: " 
-    0 do i dup dup 5 mod 0 = if cr THEN s>f fexp f. loop \ we convert the count to float because...
+    0 do i dup 5 mod 0 = if cr THEN s>f fexp f. loop \ we convert the count to float because...
     \ we can include 0 here because exp(0) is 1
 ;
 \ examples

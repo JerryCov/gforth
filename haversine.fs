@@ -89,8 +89,9 @@ cr .( dd to dms conversion examples: ) cr
     cr ." difference between the longitudes. This leaves us with four values on the"
     cr ." floating point stack.  Next we multiply the top three items then add that to"
     cr ." the final item, this result is our haversine formula result.  To get the"
-    cr ." distance in nautical miles, we take the square root of our haversine"
-    cr ." and multiply it by two times the radius of the Earth in nautical miles."
+    cr ." distance in nautical miles, we take the square root of our haversine,"
+    cr ." take the arcsine of that, and multiply it by two times the radius of"
+    cr ." the Earth in nautical miles."
     cr ." If we are given Degrees minutes seconds, use the handy utility dms_to_dd to convert to"
     cr ." decimal degrees for our trig functions as shown in the example above."
     cr ." Remember not to f. it away before fduping it for later use. (or just don't f. it at all)"
@@ -123,8 +124,8 @@ cr .( haversine on the stack: ) cr
 24.16e 2e f/ D2R f* fsin 2e f** fdup f. cr
 .( f* f* f+ fdup f. )
 f* f* f+ fdup f. cr
-.( 2e 1/f f** 2e ErnMi f* f* fdup f. )
-2e 1/f f** 2e ErnMi f* f* fdup f. .( nautical miles ) cr
+.( 2e 1/f f** fasin 2e ErnMi f* f* fdup f. )
+2e 1/f f** fasin 2e ErnMi f* f* fdup f. .( nautical miles ) cr
 .Note2
 
 cr f.s .( This is left on the fp stack by the final fdup) cr
@@ -136,7 +137,7 @@ cr .( 41.98e D2R f* fcos fdup f.)
 cr .( 33.45e D2R f* fcos fdup f.)
 cr .( 24.16e 2e f/ D2R f* fsin 2e f** fdup f. cr)
 cr .( f* f* f+ fdup f.)
-cr .( 2e 1/f f** 2e ErnMi f* f* fdup f.)
+cr .( 2e 1/f f** fasin 2e ErnMi f* f* fdup f.)
 cr .( The second to last result is our haversine formula result in radians,)
 cr .( and of course the final result is the distance in nautical miles.)
 cr .( We also did a nondestrutive fp stack print to show that we kept)
@@ -168,20 +169,26 @@ cr .( The following 6 words do not affect the data stack. ) cr
 : haverform f* f* f+ 
             \ multiply the top 3 items and add the forth, yielding our haversine
 ;
-: haverdistNmi 2e 1/f f** 2e ErnMi f* f*
+: haverdistNmi 2e 1/f f** fasin 2e ErnMi f* f*
 	    \ This word takes the square root of the top of the fp stack
-	    \ (2e 1/f f** is forth's square root),the first f* doubles ErNmi,
-	    \ the second multiplies by the square root, yielding result in nautical miles
+	    \ (2e 1/f f** is forth's square root), then takes the arcsine of
+	    \ that (the step the haversine formula actually requires -- distance
+	    \ is 2*R*asin(sqrt(a)), not just 2*R*sqrt(a)), the first f* doubles
+	    \ ErNmi, the second multiplies by the arcsine, yielding result in nautical miles
 ;
-: haverdistSmi 2e 1/f f** 2e ErSmi f* f*
+: haverdistSmi 2e 1/f f** fasin 2e ErSmi f* f*
 	    \ This word takes the square root of the top of the fp stack
-	    \ (2e 1/f f** is forth's square root),the first f* doubles ErSmi,
-	    \ the second multiplies by the square root, yielding result in statute miles
+	    \ (2e 1/f f** is forth's square root), then takes the arcsine of
+	    \ that (the step the haversine formula actually requires -- distance
+	    \ is 2*R*asin(sqrt(a)), not just 2*R*sqrt(a)), the first f* doubles
+	    \ ErSmi, the second multiplies by the arcsine, yielding result in statute miles
 ;
-: haverdistkm 2e 1/f f** 2e Erkm f* f*
+: haverdistkm 2e 1/f f** fasin 2e Erkm f* f*
 	    \ This word takes the square root of the top of the fp stack
-	    \ (2e 1/f f** is forth's square root),the first f* doubles Erkm,
-	    \ the second multiplies by the square root, yielding result in kilometers
+	    \ (2e 1/f f** is forth's square root), then takes the arcsine of
+	    \ that (the step the haversine formula actually requires -- distance
+	    \ is 2*R*asin(sqrt(a)), not just 2*R*sqrt(a)), the first f* doubles
+	    \ Erkm, the second multiplies by the arcsine, yielding result in kilometers
 ;
 : dfcos D2R f* fcos 
 	\ converts input decimal degrees to radians for fcos, you can use this technique

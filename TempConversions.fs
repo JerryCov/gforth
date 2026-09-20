@@ -40,7 +40,7 @@ see F>R
 cr cr
 
 : R>F .( R -fp- F ) \  Convert Rankine to Fahrenheit
-  458.67e f- ;
+  459.67e f- ;
 see R>F
 cr cr
 
@@ -64,12 +64,12 @@ cr cr
 
 : .K>C .( K -fp- )
   cr fdup f. ." Degrees Kelvin is " K>C f. ." Degrees Centigrade." ;
-see .C>F
+see .K>C
 cr cr
 
 : .C>K .( K -fp- )
   cr fdup f. ." Degrees Centigrade is " C>K f. ." Degrees Kelvin." ;
-see .C>F
+see .C>K
 cr cr
 
 : .F>R .( F -fp- )

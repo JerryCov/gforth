@@ -20,7 +20,7 @@ cr
 	  cr ;
 
 cr .explain
-3040e fconstant re_nmi
+3440e fconstant re_nmi
 3959e fconstant re_smi
 6371e fconstant re_km
 \ reue = radius earth units equator, lat latitude in degrees, radius earth in units
