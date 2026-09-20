@@ -22,8 +22,8 @@ cof f@ turns f@ 2e pi f* f* f* fexp f. cr
   2e pi f* f* f* fexp f* ;
 see capstan cr
 
-.( 1e 0.2e cof f! 3e turns f!)
-1e 0.2e cof f! 3e turns f! cr
+.( 0.2e cof f! 3e turns f!)
+0.2e cof f! 3e turns f! cr
 .( 1e cof f@ turns f@ capstan f.)
 1e cof f@ turns f@ capstan f. cr
 .( 0.5e cof f@ turns f@ capstan f.)
@@ -33,8 +33,8 @@ see capstan cr
 .( 0.01e cof f@ turns f@ capstan f.)
 0.01e cof f@ turns f@ capstan f. cr
 cr
-.( 1e 0.5e cof f! 3e turns f!)
-1e 0.5e cof f! 3e turns f! cr
+.( 0.5e cof f! 3e turns f!)
+0.5e cof f! 3e turns f! cr
 .( 1e cof f@ turns f@ capstan f.)
 1e cof f@ turns f@ capstan f. cr
 

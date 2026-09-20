@@ -38,14 +38,14 @@ cr .( Translational velocity of rotation at 0.0 degrees latitude: ) latrad1 f@ 2
 .( _nmph.)
 
 
-0.0e latrad1 latrad1 f! \ (defvar latrad1) 
+0.0e latrad1 f! \ reset latrad1
 cr .( ERSMI D2R 0.0e f* fcos f* latrad1 f!)
 ERSMI D2R 0.0e f* fcos f* latrad1 f!
 cr .( latrad1 f?) 2 spaces latrad1 f? .( _smi)
 cr .( Translational velocity of rotation at 0.0 degrees latitude: ) latrad1 f@ 2.0e pi f* f* 24e f/ f.
 .( _mph.)
 
-0.0e latrad1 latrad1 f! \ (defvar latrad1) 
+0.0e latrad1 f! \ reset latrad1
 cr .( ERKM D2R 0.0e f* fcos f* latrad1 f!)
 ERKM D2R 0.0e f* fcos f* latrad1 f!
 cr .( latrad1 f?) 2 spaces latrad1 f? .( _km)

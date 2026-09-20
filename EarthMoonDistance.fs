@@ -8,7 +8,7 @@
        ;;;; d is distance between two observers on the Earth
        ;;;; p is the parallax angle between the observers and the moon
        ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-       ; [then] terminates the multiline comment.
+       ; the closing bracket-then keyword below terminates the multiline comment.
 [then]
 cr .( Word to display value of a floating point variable.) cr 
 : f? .( fvar-addr -ds- ) f@ f. ;
