@@ -1,3 +1,8 @@
 # Claude Code session/working notes - not part of the Forth archive itself
 Project-Notes.md
 WakeupClaude.txt
+
+# Third-party GNU/gforth-distributed example code, not Jerry's own work.
+# Kept on local disk because floatingpointmath.fs depends on it via `require`,
+# but never uploaded, per standing no-proprietary-content policy.
+random.fs
