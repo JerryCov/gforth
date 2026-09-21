@@ -16,20 +16,21 @@
 ." ( T g -f- L )"  see pendulum-length cr
 
 fvariable len
-fvariable g
+9.80665e fconstant g   \ standard gravity, full-precision internationally
+                        \ defined value -- a real physical constant, not
+                        \ mutable state, so fconstant fits better than fvariable
 fvariable t
 
 1e   len f!   \ a 1-meter pendulum
-9.8e g   f!   \ standard gravity
 
 cr .( A 1-meter pendulum [approximately the classic "seconds pendulum"]: ) cr
-cr ." Length L = " len f@ f. ." _m, gravity g = " g f@ f. ." _m/s^2" cr
+cr ." Length L = " len f@ f. ." _m, gravity g = " g f. ." _m/s^2" cr
 
-len f@ g f@ period t f!
+len f@ g period t f!
 cr ." Period T = 2*pi*sqrt(L/g) = " t f@ f. ." _s"
 
 cr ." Cross-check: recovering L from T and g: "
-t f@ g f@ pendulum-length f. ." _m (should match the " len f@ f. ." _m above)" cr
+t f@ g pendulum-length f. ." _m (should match the " len f@ f. ." _m above)" cr
 
 cr .( Check stacks, Data: ) .s .( FP: ) f.s cr
 cr .( Done! ) cr
