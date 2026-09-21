@@ -19,10 +19,6 @@ jobs:
       - name: Run all Forth scripts
         run: |
           for f in *.fs; do
-            if [ "$f" = "floatingpointmath.fs" ]; then
-              echo "=== Skipping $f (requires random.fs, kept out of the repo as third-party GNU content) ==="
-              continue
-            fi
             echo "=== Running $f ==="
             gforth "./$f" -e bye
           done
